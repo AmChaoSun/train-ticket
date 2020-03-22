@@ -546,7 +546,7 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appHtml,
+            template: paths.appQueryHtml,
             filename: "query.html",
             chunks: ["query"]
           },
@@ -573,7 +573,7 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appHtml,
+            template: paths.appTicketHtml,
             filename: "ticket.html",
             chunks: ["ticket"]
           },
@@ -600,7 +600,7 @@ module.exports = function(webpackEnv) {
           {},
           {
             inject: true,
-            template: paths.appHtml,
+            template: paths.appOrderHtml,
             filename: "order.html",
             chunks: ["order"]
           },
@@ -677,10 +677,17 @@ module.exports = function(webpackEnv) {
             manifest[file.name] = file.path;
             return manifest;
           }, seed);
-          const entrypointFiles = entrypoints.main.filter(
+          // const entrypointFiles = entrypoints.main.filter(
+          //   fileName => !fileName.endsWith(".map")
+          // );
+
+          let entrypointFiles = [];
+          Object.keys(entrypoints).forEach(key =>
+            entrypointFiles.concat(entrypoints[key])
+          );
+          entrypointFiles = entrypointFiles.filter(
             fileName => !fileName.endsWith(".map")
           );
-
           return {
             files: manifestFiles,
             entrypoints: entrypointFiles
