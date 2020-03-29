@@ -1,9 +1,30 @@
+import React from "react";
 import "./App.css";
 import { connect } from "react-redux";
 
-function App(props) {}
+import Header from "../common/Header.jsx";
+import DepartDate from "./DepartDate.jsx";
+import HighSpeed from "./HighSpeed.jsx";
+import Journey from "./Journey.jsx";
+import Submit from "./Submit.jsx";
+
+function App(props) {
+  return (
+    <div>
+      <Header></Header>
+      <Journey></Journey>
+      <DepartDate></DepartDate>
+      <HighSpeed></HighSpeed>
+      <Submit></Submit>
+    </div>
+  );
+}
 
 export default connect(
-  function mapStateToProps(state) {},
-  function mapDispatchToProps(dispatch) {}
+  function mapStateToProps(state) {
+    return {};
+  },
+  function mapDispatchToProps(dispatch) {
+    return {};
+  }
 )(App);
